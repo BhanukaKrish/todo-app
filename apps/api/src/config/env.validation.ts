@@ -18,7 +18,6 @@ export class EnvironmentVariables {
   @IsString()
   MONGODB_URI: string = 'mongodb://localhost:27017/todos';
 
-  /** Comma-separated list of allowed CORS origins. */
   @IsString()
   CORS_ORIGIN: string = 'http://localhost:5173';
 }

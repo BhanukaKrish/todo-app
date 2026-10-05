@@ -11,7 +11,6 @@ import { EditTodoDialog } from './edit-todo-dialog'
 
 interface TodoItemProps {
   todo: Todo
-  /** True while the todo only exists optimistically and has no server id yet. */
   pending?: boolean
   onToggle: (todo: Todo) => void
   onUpdate: (todo: Todo, values: TodoFormValues) => void

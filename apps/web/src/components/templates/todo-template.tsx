@@ -1,6 +1,5 @@
 interface TodoTemplateProps {
   header: React.ReactNode
-  /** Left column on large screens, top section on mobile. */
   aside: React.ReactNode
   toolbar: React.ReactNode
   children: React.ReactNode

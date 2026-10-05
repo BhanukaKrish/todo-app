@@ -5,7 +5,6 @@ interface TodoToolbarProps {
   filter: TodoFilter
   counts: Record<TodoFilter, number>
   onFilterChange: (filter: TodoFilter) => void
-  /** Background refetch indicator; initial loading is handled by the list. */
   isSyncing: boolean
 }
 

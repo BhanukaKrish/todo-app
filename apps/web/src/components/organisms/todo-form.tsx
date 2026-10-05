@@ -14,7 +14,6 @@ interface TodoFormProps {
   submitIcon?: React.ReactNode
   onSubmit: (values: TodoFormValues) => void
   onCancel?: () => void
-  /** Clears the form after a successful submit (used by the "create" form). */
   resetOnSubmit?: boolean
   autoFocus?: boolean
 }

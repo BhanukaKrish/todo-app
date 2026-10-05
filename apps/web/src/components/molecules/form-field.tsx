@@ -5,7 +5,6 @@ interface FormFieldProps {
   id: string
   label: string
   error?: string
-  /** Current length of the value; renders a counter when paired with `maxLength`. */
   length?: number
   maxLength?: number
   optional?: boolean

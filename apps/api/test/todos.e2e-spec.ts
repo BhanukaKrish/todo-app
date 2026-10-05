@@ -12,7 +12,6 @@ describe('Todos API (e2e)', () => {
 
   beforeAll(async () => {
     mongo = await MongoMemoryServer.create();
-    // ConfigModule validates env at import time, so set it before loading the module.
     process.env.MONGODB_URI = mongo.getUri('todos');
 
     const { AppModule } = await import('../src/app.module.js');

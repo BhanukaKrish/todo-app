@@ -29,7 +29,6 @@ export class TodosService {
     return this.ensureFound(todo, id);
   }
 
-  /** Flips `done` atomically on the server so concurrent toggles can't race. */
   async toggleDone(id: string): Promise<TodoDocument> {
     const todo = await this.todoModel
       .findByIdAndUpdate(id, [{ $set: { done: { $not: '$done' } } }], {

@@ -10,10 +10,6 @@ import type { ApiErrorBody } from '@todo/shared';
 import type { Response } from 'express';
 import { Error as MongooseError } from 'mongoose';
 
-/**
- * Normalises every error into the `ApiErrorBody` contract so the client
- * only has to handle a single error shape.
- */
 @Catch()
 export class AllExceptionsFilter implements ExceptionFilter {
   private readonly logger = new Logger(AllExceptionsFilter.name);
@@ -38,7 +34,6 @@ export class AllExceptionsFilter implements ExceptionFilter {
       const raw =
         typeof res === 'string' ? res : (res as { message?: unknown }).message;
 
-      // ValidationPipe reports an array of messages; surface the first as the summary.
       if (Array.isArray(raw)) {
         return {
           statusCode,

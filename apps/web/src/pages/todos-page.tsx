@@ -44,7 +44,6 @@ export function TodosPage() {
       input: { title, description: description || undefined },
       tempId: createTempTodoId(),
     })
-    // Show the new item even if the user is currently looking at "Completed".
     if (filter === 'completed') setFilter('all')
   }
 

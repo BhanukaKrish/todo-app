@@ -2,7 +2,6 @@ import { useSyncExternalStore } from 'react'
 
 export type Theme = 'light' | 'dark'
 
-// Must match the key read by the inline script in index.html.
 const STORAGE_KEY = 'theme'
 const listeners = new Set<() => void>()
 

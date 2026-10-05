@@ -14,7 +14,6 @@ export class ApiError extends Error {
   }
 }
 
-/** Turns anything thrown by a request into a sentence that can be shown to a user. */
 export function getErrorMessage(error: unknown): string {
   if (error instanceof ApiError) return error.message
   return 'Something unexpected happened. Please try again.'

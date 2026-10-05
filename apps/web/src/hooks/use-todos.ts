@@ -8,17 +8,12 @@ export const todosQueryKey = ['todos'] as const
 
 const TEMP_ID_PREFIX = 'temp-'
 
-/** Optimistically-created todos carry a temporary id until the server responds. */
 export const isPendingTodo = (todo: Todo) => todo.id.startsWith(TEMP_ID_PREFIX)
 
 export function useTodos() {
   return useQuery({ queryKey: todosQueryKey, queryFn: todosService.list })
 }
 
-/**
- * Builds an optimistic mutation: `apply` patches the cached list immediately,
- * and the snapshot is restored (with an error toast) if the request fails.
- */
 function useOptimisticTodoMutation<TVariables, TResult>({
   mutationFn,
   apply,
@@ -45,8 +40,6 @@ function useOptimisticTodoMutation<TVariables, TResult>({
       toast.error(errorTitle, { description: getErrorMessage(error) })
     },
     onSuccess,
-    // Only resync once the last in-flight mutation settles, otherwise a refetch
-    // could overwrite another mutation's optimistic state.
     onSettled: () => {
       if (queryClient.isMutating() === 1) {
         return queryClient.invalidateQueries({ queryKey: todosQueryKey })
@@ -69,7 +62,6 @@ export function useCreateTodo() {
       return [{ ...input, id: tempId, done: false, createdAt: now, updatedAt: now }, ...todos]
     },
     errorTitle: "Couldn't add the todo",
-    // Swap the placeholder for the real record so its actions become available right away.
     onSuccess: (created, { tempId }) => {
       queryClient.setQueryData<Todo[]>(todosQueryKey, (todos = []) =>
         replaceTodo(todos, tempId, () => created),
