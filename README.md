@@ -1,4 +1,4 @@
-# TODO App — Full-stack take-home
+# TODO App — Full-stack
 
 A small but production-shaped TODO app: **React + Tailwind CSS + shadcn/ui** on the front, **NestJS + MongoDB (Mongoose)** on the back, in a **pnpm + Turborepo** monorepo.
 
